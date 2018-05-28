@@ -10,6 +10,7 @@ using Nop.Plugin.Widgets.Sandbox.Domain;
 using Nop.Plugin.Widgets.Sandbox.Models;
 using Nop.Services.Catalog;
 using Nop.Web.Framework.Controllers;
+using SoapTest;
 
 namespace Nop.Plugin.Widgets.Sandbox.Controllers
 {
@@ -18,12 +19,15 @@ namespace Nop.Plugin.Widgets.Sandbox.Controllers
         private readonly IRepository<SandboxPrescription> _prescriptionRepository;
         private readonly IRepository<SandboxPrescriptionItem> _prescriptionItemRepository;
         private readonly IProductService _productService;
+        private readonly CartClient _cartClient;
 
-        public SandboxPageController(IRepository<SandboxPrescription> prescriptionRepository, IRepository<SandboxPrescriptionItem> prescriptionItemRepository, IProductService productService)
+        public SandboxPageController(IRepository<SandboxPrescription> prescriptionRepository, 
+            IRepository<SandboxPrescriptionItem> prescriptionItemRepository, IProductService productService, CartClient cartClient)
         {
             _prescriptionRepository = prescriptionRepository;
             _prescriptionItemRepository = prescriptionItemRepository;
             _productService = productService;
+            _cartClient = cartClient;
         }
 
 
@@ -34,6 +38,18 @@ namespace Nop.Plugin.Widgets.Sandbox.Controllers
 
 
             return View("~/Plugins/Widgets.Sandbox/Views/SandboxPage/Index.cshtml", products);
+        }
+
+        [Route("Books")]
+        [Route("Books/Search/{search}")]
+        public async Task<IActionResult> Service([FromRoute]string search = "")
+        {
+
+            var response = await _cartClient.getItemByTitleAsync(search);
+
+            var model = response.Result.Take(10).ToList();
+
+            return View("~/Plugins/Widgets.Sandbox/Views/SandboxPage/Service.cshtml", model);
         }
 
 

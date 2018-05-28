@@ -8,6 +8,7 @@ using Nop.Data;
 using Nop.Plugin.Widgets.Sandbox.Data;
 using Nop.Plugin.Widgets.Sandbox.Domain;
 using Nop.Web.Framework.Infrastructure;
+using SoapTest;
 
 namespace Nop.Plugin.Widgets.Sandbox.Infrastructure
 {
@@ -40,6 +41,10 @@ namespace Nop.Plugin.Widgets.Sandbox.Infrastructure
             builder.RegisterType<EfRepository<SandboxPrescriptionItem>>()
                 .As<IRepository<SandboxPrescriptionItem>>()
                 .WithParameter(ResolvedParameter.ForNamed<IDbContext>(dataContextName))
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<CartClient>()
+                .As<CartClient>()
                 .InstancePerLifetimeScope();
         }
 

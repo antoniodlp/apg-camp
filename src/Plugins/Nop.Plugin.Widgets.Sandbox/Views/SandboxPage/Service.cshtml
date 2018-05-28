@@ -1,0 +1,16 @@
+﻿@model List<SoapTest.Book>
+@{
+    Layout = "_ColumnsOne";
+}
+<h3>Books found</h3>
+
+<ul>
+    @foreach (var book in Model)
+    {
+        <li>
+            <b>@book.description</b><br/>
+            @book.publisher<br/>
+            <span style="color:red">@book.price</span>
+        </li>
+    }
+</ul>
