@@ -1,0 +1,37 @@
+﻿@model Nop.Plugin.Widgets.Sandbox.Models.PrescriptionModel
+@{
+    Layout = "_ColumnsOne";
+}
+<h1>Prescription @Model.Id</h1>
+<table class="data-table">
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Patient</th>
+        <th>Diagnosis</th>
+        <th rowspan="2">
+            <a asp-action="Dispatch" asp-route-id="@Model.Id" class="button-1" onclick="return confirm('Please confirm')">Dispatch this prescription</a>
+        </th>
+    </tr>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Date.ToShortDateString()</td>
+        <td>@Model.Patient</td>
+        <td>@Model.Diagnosis</td>
+    </tr>
+</table>
+<table class="data-table">
+    <tr>
+        <th>Id</th>
+        <th>Item</th>
+        <th>Is Available</th>
+    </tr>
+    @foreach (var item in @Model.Items)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Item</td>
+            <td>@item.IsAvailable</td>
+        </tr>
+    }
+</table>

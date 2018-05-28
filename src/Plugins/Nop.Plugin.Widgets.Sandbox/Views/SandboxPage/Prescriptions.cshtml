@@ -1,0 +1,28 @@
+﻿@model Nop.Plugin.Widgets.Sandbox.Models.PrescriptionsModel
+@{
+    Layout = "_ColumnsOne";
+}
+<h1>Prescriptions</h1>
+<table class="data-table">
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Patient</th>
+        <th>Diagnosis</th>
+        <th>Items</th>
+        <th></th>
+    </tr>
+    @foreach (var prescription in Model.Prescriptions)
+    {
+    <tr>
+        <td>@prescription.Id</td>
+        <td>@prescription.Date.ToShortDateString()</td>
+        <td>@prescription.Patient</td>
+        <td>@prescription.Diagnosis</td>
+        <td>@prescription.ItemsCount</td>
+        <td>
+            <a asp-action="Prescription" asp-route-id="@prescription.Id">View Items</a>
+        </td>
+    </tr>
+    }
+</table>
