@@ -1,5 +1,19 @@
-﻿@model Nop.Plugin.Widgets.Sandbox.Models.ConfigurationModel
+﻿@model List<Nop.Core.Domain.Catalog.Product>
 @{
     Layout = "_ColumnsOne";
 }
-<h2>Hello world</h2>
+<h3>Hello world</h3>
+
+<br /><br /><br />
+<h3>Low stock products</h3>
+
+<ul>
+    @foreach (var product in Model)
+    {
+    <li>@product.Name - <b>@product.StockQuantity</b></li>
+    }
+</ul>
+
+<br /><br /><br />
+<h3>Custom Widget Zone</h3>
+@await Component.InvokeAsync("Widget", new { widgetZone = "sandbox_page_footer" })

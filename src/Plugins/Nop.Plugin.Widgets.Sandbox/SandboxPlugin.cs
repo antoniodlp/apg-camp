@@ -25,7 +25,7 @@ namespace Nop.Plugin.Widgets.Sandbox
 
         public IList<string> GetWidgetZones()
         {
-            return new List<string>() {"home_page_top"};
+            return new List<string>() {"home_page_top", "sandbox_page_footer"};
         }
 
         public override string GetConfigurationPageUrl()

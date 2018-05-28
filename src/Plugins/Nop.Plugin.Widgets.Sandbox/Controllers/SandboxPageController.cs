@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Nop.Core.Data;
 using Nop.Plugin.Widgets.Sandbox.Domain;
 using Nop.Plugin.Widgets.Sandbox.Models;
+using Nop.Services.Catalog;
 using Nop.Web.Framework.Controllers;
 
 namespace Nop.Plugin.Widgets.Sandbox.Controllers
@@ -16,19 +17,27 @@ namespace Nop.Plugin.Widgets.Sandbox.Controllers
     {
         private readonly IRepository<SandboxPrescription> _prescriptionRepository;
         private readonly IRepository<SandboxPrescriptionItem> _prescriptionItemRepository;
+        private readonly IProductService _productService;
 
-        public SandboxPageController(IRepository<SandboxPrescription> prescriptionRepository, IRepository<SandboxPrescriptionItem> prescriptionItemRepository)
+        public SandboxPageController(IRepository<SandboxPrescription> prescriptionRepository, IRepository<SandboxPrescriptionItem> prescriptionItemRepository, IProductService productService)
         {
             _prescriptionRepository = prescriptionRepository;
             _prescriptionItemRepository = prescriptionItemRepository;
+            _productService = productService;
         }
 
 
         public IActionResult Index()
         {
-            return View("~/Plugins/Widgets.Sandbox/Views/SandboxPage/Index.cshtml");
+
+            var products = _productService.GetLowStockProducts().ToList();
+
+
+            return View("~/Plugins/Widgets.Sandbox/Views/SandboxPage/Index.cshtml", products);
         }
 
+
+        
         public IActionResult Prescriptions()
         {
 
@@ -69,6 +78,8 @@ namespace Nop.Plugin.Widgets.Sandbox.Controllers
 
 
                 }).FirstOrDefault();
+
+
 
 
             return View("~/Plugins/Widgets.Sandbox/Views/SandboxPage/Prescription.cshtml", model);
