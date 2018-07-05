@@ -1,0 +1,86 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+   <TargetFramework>net461</TargetFramework>
+ </PropertyGroup>  
+ <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+   <OutputPath>..\..\Presentation\Nop.Web\Plugins\Misc.Cms</OutputPath>
+   <OutDir>$(OutputPath)</OutDir>
+ </PropertyGroup>
+ <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+   <OutputPath>..\..\Presentation\Nop.Web\Plugins\Misc.Cms</OutputPath>
+   <OutDir>$(OutputPath)</OutDir>
+ </PropertyGroup>
+ <!-- This target execute after "Build" target -->
+ <Target Name="NopTarget" AfterTargets="Build">
+   <!-- Delete unnecessary libraries from plugins path -->
+   <MSBuild Projects="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
+ </Target>
+ <ItemGroup>
+   <None Remove="Areas\Admin\Views\Topic\Create.cshtml" />
+   <None Remove="Areas\Admin\Views\Topic\Edit.cshtml" />
+   <None Remove="Areas\Admin\Views\Topic\List.cshtml" />
+   <None Remove="Areas\Admin\Views\Topic\_CreateOrUpdate.cshtml" />
+   <None Remove="Areas\Admin\Views\Topic\_CreateOrUpdate.Info.cshtml" />
+   <None Remove="Areas\Admin\Views\Topic\_CreateOrUpdate.Seo.cshtml" />
+   <None Remove="Areas\Admin\Views\_ViewImports.cshtml" />
+   <None Remove="Areas\Admin\Views\_ViewStart.cshtml" />
+   <None Remove="Views\Topic\TopicDetails.cshtml" />
+ </ItemGroup>
+ <ItemGroup>
+   <Content Include="Areas\Admin\Views\Topic\Create.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Areas\Admin\Views\Topic\Edit.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Areas\Admin\Views\Topic\List.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Areas\Admin\Views\Topic\_CreateOrUpdate.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Areas\Admin\Views\Topic\_CreateOrUpdate.Info.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Areas\Admin\Views\Topic\_CreateOrUpdate.Seo.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Areas\Admin\Views\_ViewImports.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Areas\Admin\Views\_ViewStart.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+   <Content Include="Views\Topic\TopicDetails.cshtml">
+     <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+   </Content>
+ </ItemGroup>
+ <ItemGroup>
+   <ProjectReference Include="..\..\Libraries\Nop.Core\Nop.Core.csproj">
+     <Private>false</Private>
+   </ProjectReference>
+   <ProjectReference Include="..\..\Libraries\Nop.Services\Nop.Services.csproj">
+     <Private>false</Private>
+   </ProjectReference>
+   <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj">
+     <Private>false</Private>
+   </ProjectReference>
+   <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj">
+     <Private>false</Private>
+   </ProjectReference>
+ </ItemGroup>
+ <ItemGroup>
+   <Reference Include="System.ServiceModel" />
+ </ItemGroup>
+ <ItemGroup>
+   <None Update="plugin.json">
+     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+   </None>
+   <None Update="Views\_ViewImports.cshtml">
+     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+   </None>
+ </ItemGroup>
+ <ItemGroup>
+   <WCFMetadata Include="Connected Services" />
+ </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "CMS",
+  "SystemName": "Misc.Cms",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.00" ],
+  "Author": "",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.Cms.dll",
+  "Description": "Plugin to add topics CMS features"
+}

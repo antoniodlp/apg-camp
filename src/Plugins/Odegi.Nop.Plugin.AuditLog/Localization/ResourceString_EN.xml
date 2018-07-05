@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+  <LocaleResource Name="Odegi.Plugin.AuditLog.Configure">
+    <Value>AuditLog</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.Enabled">
+    <Value>Enabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.Enabled.Hint">
+    <Value>Check to enable recent orders option</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.Title">
+    <Value>Recent Orders</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.Product.Placeholder">
+    <Value>Sku</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.Quantity.Placeholder">
+    <Value>Qty</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.LargeOrderPad">
+    <Value>Large Order Pad</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.LargeOrderPad.SKU">
+    <Value>SKU</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.LargeOrderPad.Quantity">
+    <Value>Quantity</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.LargeOrderPad.Description">
+    <Value>Product name will appear here after entering item #</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.LargeOrderPad.Price">
+    <Value>Price</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.AddRows">
+    <Value>Add Rows</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.ClearAllRows">
+    <Value>Clear All</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.AddToCartError">
+    <Value>We could not recognize the sku you entered ({0}). Please check and try again.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.InvalidMsg">
+    <Value>Please enter valid sku and quantity.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.RequiredMsg">
+    <Value>Please add at least one sku.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.SelectProductAttributes">
+    <Value>Select Product Attributes</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.EditProductAttributes">
+    <Value>Edit Product Attributes</Value>
+  </LocaleResource>
+<LocaleResource Name="Odegi.Plugin.AuditLog.AddToCart">
+    <Value>Add to cart</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.AddToWishlist">
+    <Value>Add to wishlist</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.UnitPrice">
+    <Value>Unit price</Value>
+  </LocaleResource>
+  <LocaleResource Name="Odegi.Plugin.AuditLog.Delete">
+    <Value>Delete</Value>
+  </LocaleResource>
+</Language>
+
+

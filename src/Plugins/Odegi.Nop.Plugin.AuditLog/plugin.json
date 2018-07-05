@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Odegi",
+  "FriendlyName": "Audit Log",
+  "SystemName": "Odegi.AuditLog",
+  "Version": "1.1",
+  "SupportedVersions": [ "4.00" ],
+  "Author": "Odegi Team",
+  "DisplayOrder": 1,
+  "FileName": "Odegi.Nop.Plugin.AuditLog.dll",
+  "Description": "This plugin allows you to log content changes"
+}

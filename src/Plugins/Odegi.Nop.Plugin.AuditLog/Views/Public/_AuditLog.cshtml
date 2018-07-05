@@ -1,0 +1,52 @@
+﻿@model Odegi.Nop.Plugin.AuditLog.Models.ManufacturersModel
+@{
+    // Html.AddCssFileParts("~/Plugins/Odegi.AuditLog/Content/css/recent_orders.css");
+}
+<div class="topBrandsLists home-page-product-grid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="head-title">
+                Top Brands
+                <a href="@Url.Content("~/manufacturer/all")" class="pull-right">See All Brands <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </h2>
+        </div>
+    </div>
+    <div id="topBrands" class="row item-grid commonSlider owl-loaded owl-drag">
+
+        <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1500px;">
+                @foreach (var m in Model.Manufacturers)
+                {
+                    <div class="owl-item active" style="width: 300px;">
+                        <div class="item-box col-md-3">
+                            <a href="@m.Url"><img src="@m.ImageUrl" alt="@m.AltText"></a>
+                        </div>
+                    </div>
+                }
+                <!--
+                <div class="owl-item active" style="width: 300px;">
+                    <div class="item-box col-md-3">
+                        <a href="#"><img src="/Themes/OdegiTheme/Content/images/brandImg1.png"></a>
+                    </div>
+                </div><div class="owl-item active" style="width: 300px;">
+                    <div class="item-box col-md-3">
+                        <a href="#"><img src="/Themes/OdegiTheme/Content/images/brandImg2.png"></a>
+                    </div>
+                </div><div class="owl-item active" style="width: 300px;">
+                    <div class="item-box col-md-3">
+                        <a href="#"><img src="/Themes/OdegiTheme/Content/images/brandImg3.png"></a>
+                    </div>
+                </div><div class="owl-item active" style="width: 300px;">
+                    <div class="item-box col-md-3">
+                        <a href="#"><img src="/Themes/OdegiTheme/Content/images/brandImg4.png"></a>
+                    </div>
+                </div><div class="owl-item active" style="width: 300px;">
+                    <div class="item-box col-md-3">
+                        <a href="#"><img src="/Themes/OdegiTheme/Content/images/brandImg5.png"></a>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev disabled"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next disabled"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div>
+    </div>
+</div>

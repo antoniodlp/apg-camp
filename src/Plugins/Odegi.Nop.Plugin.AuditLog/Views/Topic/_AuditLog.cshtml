@@ -1,0 +1,122 @@
+﻿@using Nop.Web.Areas.Admin.Models.Topics
+@using System.Data;
+@model TopicModel
+
+@using Odegi.Nop.Plugin.AuditLog.Infrastructure;
+@{
+    //Code Here
+    var topicId = Model.Id;
+
+    string sql = String.Format("select top 15 * from TopicHistory where TopicId = '{0}' order by UpdatedOnUtc desc;", topicId);
+    DataSet ds = DataHelper.Query(sql);
+}
+
+<style>
+    .rowlog {
+        margin-right: 80px;
+        margin-left: 80px;
+        width: 80%;
+        min-height: 30px;
+        padding-top: 5px;
+    }
+
+    .cellGrey {
+        background-color: #eee;
+    }
+</style>
+
+<form asp-controller="TopicHistory" asp-action="ApproveAuditLog" method="post">
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Changes History</h3>
+                <br />
+                @if (ds.Tables[0].Rows.Count > 0)
+                {
+                    <!--Header-->
+                    <div class="form-group rowlog " style="font-weight:bold;">
+                        <div class="col-md-4">Page Title</div>
+                        <div class="col-md-3">Modified By</div>
+                        <div class="col-md-3">Approved By</div>
+                        <div class="col-md-2">Action</div>
+                    </div>
+
+                    bool firstRecord = true;
+                    var cellStyle = "";
+
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        var historyId = dr["Id"].ToString();
+
+                        <div class="form-group rowlog @cellStyle">
+                            <div class="col-md-4">
+                                @dr["Title"].ToString()
+                            </div>
+                            <div class="col-md-3">
+                                @dr["UpdatedBy"].ToString()
+                                <br>
+                                @DateTime.Parse(dr["UpdatedOnUtc"].ToString()).ToString("MM/dd/yyyy hh:mm tt")
+                            </div>
+
+                            @{
+                                var approvedBy = @dr["ApprovedBy"].ToString();
+                            }
+
+                            <div class="col-md-3">
+                                @if (@approvedBy != "")
+                                {
+                                    @approvedBy
+                                    <br>
+                                    @DateTime.Parse(dr["ApprovedOnUtc"].ToString()).ToString("MM/dd/yyyy hh:mm tt")
+                                }
+                                @{
+                                    firstRecord = false;
+                                }
+                            </div>
+
+
+
+                            <div class="col-md-2" style="text-align:center;">
+                                @{
+                                    var urlCompare = "~/Admin/TopicHistory/Compare/" + historyId;
+                                }
+                                <a href="@Url.Content(urlCompare)">Compare</a>
+                            </div>
+                        </div>
+
+                        cellStyle = cellStyle == "" ? "cellGrey" : "";
+
+                    }
+                }
+                else
+                {
+                    <p>No history found.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function approveVersion(id) {
+        var postData = { logId: id };
+        $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: "@(Url.Action("ApproveAuditLog", "TopicHistory"))",
+                    data: postData,
+                    success: function(data) {
+                        /*ddlStates.html('');
+                        $.each(data, function(id, option) {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                        });*/
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert('Error when authorize.');
+                    }
+                });
+    }
+    </script>
+
+</form>
+

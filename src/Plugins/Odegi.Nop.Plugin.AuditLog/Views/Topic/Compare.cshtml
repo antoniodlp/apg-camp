@@ -1,0 +1,86 @@
+﻿@using Odegi.Nop.Plugin.AuditLog.Models
+@model CompareModel
+
+@{
+    Layout = "_AdminLayout";
+    //page title
+    ViewBag.Title = T("Admin.ContentManagement.Topics").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("Topics");
+}
+
+<style>
+    .od-compare-page .cellTitle {background-color:#fff;padding:5px;}
+    .od-compare-page .cellBody {background-color:#fff;padding:5px;}
+    .od-compare-page th {text-align:center; padding:10px; font-size:18px;}
+</style>
+
+<nop-antiforgery-token />
+<form asp-controller="TopicHistory" asp-action="Compare" method="post">
+
+    <input type="hidden" id="logId" value="@Model.Id" />
+
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.ContentManagement.Topics")
+            <small>
+                <i class="fa fa-arrow-circle-left"></i>
+                <!--<a asp-action="Edit/4">back to page</a>-->
+                <a href="javascript:history.back();">back to page</a>
+            </small>
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="approve" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                Approve New Version
+            </button>
+            @await Component.InvokeAsync("AdminWidget", new { widgetZone = "admin_topic_list_buttons" })
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="form-horizontal">
+            <div class="panel-group">
+
+                <table style="width:80%; margin:auto;" class="od-compare-page">
+                    <tr>
+                        <th style="width:45%">
+                            Actual Version
+                        </th>
+                        <td style="width:10%"></td>
+                        <th style="width:45%">
+                            New Version
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="cellTitle">
+                            <strong>Title</strong>
+                            <p>@Model.Title</p>
+
+                        </td>
+                        <td></td>
+                        <td class="cellTitle">
+                            <strong>Title</strong>
+                            <p>@Model.TitleNew</p>
+                        </td>
+                    </tr>
+                    <tr><td style="height:15px;"></td></tr>
+                    <tr>
+                        <td class="cellBody">
+                            <strong>Body</strong>
+                            <p>@Html.Raw(Model.Body)</p>
+                        </td>
+                        <td></td>
+                        <td class="cellBody">
+                            <strong>Body</strong>
+                            <p>@Html.Raw(Model.BodyNew)</p>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</form>
