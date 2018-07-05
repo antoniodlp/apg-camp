@@ -7,10 +7,11 @@ using Nop.Core;
 using Nop.Core.Plugins;
 using Nop.Services.Cms;
 using Nop.Services.Configuration;
+using Nop.Web.Framework.Menu;
 
 namespace Nop.Plugin.Widgets.Sandbox
 {
-    public class SandboxPlugin: BasePlugin, IWidgetPlugin
+    public class SandboxPlugin: BasePlugin, IWidgetPlugin, IAdminMenuPlugin
     {
 
         private readonly ISettingService _setinngService;
@@ -57,5 +58,14 @@ namespace Nop.Plugin.Widgets.Sandbox
             base.Uninstall();
         }
 
+        public void ManageSiteMap(SiteMapNode rootNode)
+        {
+            rootNode.ChildNodes.Add(new SiteMapNode()
+            {
+                ControllerName = "WidgetSandbox",
+                ActionName = "Configure",
+                Title = "Sandbox widget"
+            });
+        }
     }
 }
