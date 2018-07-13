@@ -1,14 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Services.Events;
 using Nop.Web.Framework.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
-//using Microsoft.AspNetCore.Http;
-using System.Web;
 
 namespace Odegi.Nop.Plugin.AuditLog.Components
 {

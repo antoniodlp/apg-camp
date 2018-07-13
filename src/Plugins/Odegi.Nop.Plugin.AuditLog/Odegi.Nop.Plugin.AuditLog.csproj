@@ -14,8 +14,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <None Remove="Content\css\Odegi.css" />
-    <None Remove="Content\css\recent_orders.css" />
     <None Remove="logo.jpg" />
     <None Remove="plugin.json" />
     <None Remove="Content\images\ajax-loader-small.gif" />
@@ -58,9 +56,6 @@
     <Content Include="plugin.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\css\recent_orders.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\images\ajax-loader-small.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -68,9 +63,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Localization\ResourceString_EN.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\Public\_AuditLog.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Admin\_AdminMenu.cshtml">

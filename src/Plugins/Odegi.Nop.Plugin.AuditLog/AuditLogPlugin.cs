@@ -13,7 +13,7 @@ using Odegi.Nop.Plugin.AuditLog.Infrastructure;
 
 namespace Odegi.Nop.Plugin.AuditLog
 {
-    public class AuditLogPlugin : BasePlugin, IWidgetPlugin, IAdminMenuPlugin
+    public class AuditLogPlugin : BasePlugin, IAdminMenuPlugin
     {
         #region Const
 
@@ -46,15 +46,6 @@ namespace Odegi.Nop.Plugin.AuditLog
         }
 
         #endregion
-
-        /// <summary>
-        /// Gets widget zones where this widget should be rendered
-        /// </summary>
-        /// <returns>Widget zones</returns>
-        public IList<string> GetWidgetZones()
-        {
-            return new List<string> { "home_page_bottom", "od_top_manufacturer" }; //"admin_header_before", "header_selectors"
-        }
 
         /// <summary>
         /// Gets a configuration page URL
@@ -118,7 +109,7 @@ namespace Odegi.Nop.Plugin.AuditLog
 
         public void ManageSiteMap(SiteMapNode rootNode)
         {
-            //Topic Module Delete
+            //Topic Module Delete & Repalce with Plugin Admin Topic
             var nodeContentManagement = rootNode.ChildNodes.FirstOrDefault(x => x.SystemName == "Content Management");
             var nodeTopic = nodeContentManagement.ChildNodes.FirstOrDefault(x => x.SystemName == "Topics");
             nodeTopic.ControllerName = "TopicHistory";

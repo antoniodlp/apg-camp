@@ -288,7 +288,7 @@ namespace Odegi.Nop.Plugin.AuditLog.Controllers.Admin
             model.DisplayOrder = 1;
             model.Published = true;
 
-            return View(model);
+            return View("~/Plugins/Odegi.AuditLog/Views/Topic/Create.cshtml", model);
         }
 
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
